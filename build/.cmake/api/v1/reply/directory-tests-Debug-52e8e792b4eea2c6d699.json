@@ -1,0 +1,413 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install",
+			"llama_build",
+			"llama_build_and_test"
+		],
+		"files" : 
+		[
+			"tests/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 112,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 12,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 182,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 99,
+				"parent" : 3
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 183,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 99,
+				"parent" : 5
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 184,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 99,
+				"parent" : 7
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 185,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 99,
+				"parent" : 9
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 186,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 99,
+				"parent" : 11
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 188,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 99,
+				"parent" : 13
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 196,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 99,
+				"parent" : 15
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 197,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 99,
+				"parent" : 17
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 199,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 99,
+				"parent" : 19
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 200,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 99,
+				"parent" : 21
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 204,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 99,
+				"parent" : 23
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 205,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 99,
+				"parent" : 25
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 206,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 99,
+				"parent" : 27
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 207,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 99,
+				"parent" : 29
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 212,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 99,
+				"parent" : 31
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Debug/test-tokenizer-0.exe"
+			],
+			"targetId" : "test-tokenizer-0::@a44f0ac069e85531cdee",
+			"targetIndex" : 75,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Debug/test-chat-parser.exe"
+			],
+			"targetId" : "test-chat-parser::@a44f0ac069e85531cdee",
+			"targetIndex" : 63,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 6,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Debug/test-chat-template.exe"
+			],
+			"targetId" : "test-chat-template::@a44f0ac069e85531cdee",
+			"targetIndex" : 64,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 8,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Debug/test-json-partial.exe"
+			],
+			"targetId" : "test-json-partial::@a44f0ac069e85531cdee",
+			"targetIndex" : 66,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 10,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Debug/test-log.exe"
+			],
+			"targetId" : "test-log::@a44f0ac069e85531cdee",
+			"targetIndex" : 67,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 12,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Debug/test-regex-partial.exe"
+			],
+			"targetId" : "test-regex-partial::@a44f0ac069e85531cdee",
+			"targetIndex" : 72,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 14,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Debug/test-thread-safety.exe"
+			],
+			"targetId" : "test-thread-safety::@a44f0ac069e85531cdee",
+			"targetIndex" : 74,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 16,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Debug/test-gguf.exe"
+			],
+			"targetId" : "test-gguf::@a44f0ac069e85531cdee",
+			"targetIndex" : 65,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 18,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Debug/test-backend-ops.exe"
+			],
+			"targetId" : "test-backend-ops::@a44f0ac069e85531cdee",
+			"targetIndex" : 60,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 20,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Debug/test-model-load-cancel.exe"
+			],
+			"targetId" : "test-model-load-cancel::@a44f0ac069e85531cdee",
+			"targetIndex" : 68,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 22,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Debug/test-autorelease.exe"
+			],
+			"targetId" : "test-autorelease::@a44f0ac069e85531cdee",
+			"targetIndex" : 59,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 24,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Debug/test-barrier.exe"
+			],
+			"targetId" : "test-barrier::@a44f0ac069e85531cdee",
+			"targetIndex" : 61,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 26,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Debug/test-quantize-fns.exe"
+			],
+			"targetId" : "test-quantize-fns::@a44f0ac069e85531cdee",
+			"targetIndex" : 70,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 28,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Debug/test-quantize-perf.exe"
+			],
+			"targetId" : "test-quantize-perf::@a44f0ac069e85531cdee",
+			"targetIndex" : 71,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 30,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Debug/test-rope.exe"
+			],
+			"targetId" : "test-rope::@a44f0ac069e85531cdee",
+			"targetIndex" : 73,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 32,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Debug/test-mtmd-c-api.exe"
+			],
+			"targetId" : "test-mtmd-c-api::@a44f0ac069e85531cdee",
+			"targetIndex" : 69,
+			"type" : "target"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "tests",
+		"source" : "tests"
+	}
+}

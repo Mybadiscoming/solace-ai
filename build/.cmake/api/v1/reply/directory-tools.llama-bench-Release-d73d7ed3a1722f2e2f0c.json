@@ -1,0 +1,45 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"tools/llama-bench/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 3,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Release/llama-bench.exe"
+			],
+			"targetId" : "llama-bench::@68ea29085c6ba479ffeb",
+			"targetIndex" : 15,
+			"type" : "target"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "tools/llama-bench",
+		"source" : "tools/llama-bench"
+	}
+}

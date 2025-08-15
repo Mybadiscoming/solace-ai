@@ -1,0 +1,45 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"examples/training/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 3,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Release/llama-finetune.exe"
+			],
+			"targetId" : "llama-finetune::@1d3075d9a6f56d602e67",
+			"targetIndex" : 23,
+			"type" : "target"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "examples/training",
+		"source" : "examples/training"
+	}
+}

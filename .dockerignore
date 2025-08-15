@@ -1,0 +1,19 @@
+# Ignore virtual environment
+venv/
+# Ignore git files
+.git/
+.gitignore
+# Ignore large build directories
+_pycache_/
+*.pyc
+*.pyo
+*.pyd
+node_modules/
+build/
+dist/
+solace-frontend/node_modules/
+llama.cpp/
+# Ignore archives
+*.zip
+*.tar
+*.gz

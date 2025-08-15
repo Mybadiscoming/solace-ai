@@ -1,0 +1,13 @@
+flask
+transformers
+torch==2.2.2+cpu --extra-index-url https://download.pytorch.org/whl/cpu
+accelerate
+numpy
+scikit-learn
+emoji
+fastapi
+uvicorn
+pydantic
+llama-cpp-python
+jinja2
+diskcache

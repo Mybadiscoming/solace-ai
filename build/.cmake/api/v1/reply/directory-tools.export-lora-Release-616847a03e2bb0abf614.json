@@ -1,0 +1,45 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"tools/export-lora/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 3,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Release/llama-export-lora.exe"
+			],
+			"targetId" : "llama-export-lora::@27f8e626b3ddac3d7196",
+			"targetIndex" : 22,
+			"type" : "target"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "tools/export-lora",
+		"source" : "tools/export-lora"
+	}
+}

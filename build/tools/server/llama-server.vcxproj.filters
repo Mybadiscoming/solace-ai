@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Programming\Solace\llama.cpp\tools\server\server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Programming\Solace\llama.cpp\tools\server\utils.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Programming\Solace\build\tools\server\index.html.gz.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Programming\Solace\build\tools\server\loading.html.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Programming\Solace\build\CMakeFiles\31a80c71e3e7a2a6db137366fa6ab47f\index.html.gz.hpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Programming\Solace\build\CMakeFiles\31a80c71e3e7a2a6db137366fa6ab47f\loading.html.hpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Programming\Solace\llama.cpp\tools\server\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{2B5C7118-2DAB-3775-B0D4-EA3AB4D7110B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{16A09E8B-D466-32D4-BF7A-F191A2ABE790}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{54201033-4805-381B-9CFB-E03906504B24}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

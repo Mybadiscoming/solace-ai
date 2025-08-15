@@ -1,0 +1,31 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# App data & cache
+.gradio/
+.vscode/
+data/
+Models/
+
+# Build & binaries
+*.exe
+*.dll
+*.so
+*.dylib
+*.bin
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# Logs
+*.log
+
+# Docker
+*.pid

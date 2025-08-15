@@ -1,0 +1,533 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "bin/MinSizeRel/ggml-base.dll"
+		},
+		{
+			"path" : "ggml/src/MinSizeRel/ggml-base.lib"
+		},
+		{
+			"path" : "bin/MinSizeRel/ggml-base.pdb"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"install",
+			"add_compile_options",
+			"target_compile_options",
+			"disable_msvc_warnings",
+			"target_compile_definitions",
+			"add_compile_definitions",
+			"target_include_directories",
+			"target_compile_features"
+		],
+		"files" : 
+		[
+			"ggml/src/CMakeLists.txt",
+			"ggml/CMakeLists.txt",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 190,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 288,
+				"parent" : 2
+			},
+			{
+				"file" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 53,
+				"parent" : 4
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 55,
+				"parent" : 4
+			},
+			{
+				"command" : 4,
+				"file" : 1,
+				"line" : 396,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 392,
+				"parent" : 7
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 412,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 1,
+				"line" : 369,
+				"parent" : 2
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 4,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 413,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 2,
+				"line" : 49,
+				"parent" : 4
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 0
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 208,
+				"parent" : 0
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 388,
+				"parent" : 0
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 389,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 54,
+				"parent" : 4
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 56,
+				"parent" : 4
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /MD /O1 /Ob1 /DNDEBUG -std:c11"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "/utf-8"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "/bigobj"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "/wd4005"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "/wd4244"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "/wd4267"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "/wd4305"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "/wd4566"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "/wd4996"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "/wd4702"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 9,
+					"define" : "GGML_BUILD"
+				},
+				{
+					"backtrace" : 10,
+					"define" : "GGML_COMMIT=\"b0493156\""
+				},
+				{
+					"backtrace" : 11,
+					"define" : "GGML_SCHED_MAX_COPIES=4"
+				},
+				{
+					"backtrace" : 12,
+					"define" : "GGML_SHARED"
+				},
+				{
+					"backtrace" : 10,
+					"define" : "GGML_VERSION=\"0.0.6140\""
+				},
+				{
+					"backtrace" : 13,
+					"define" : "_CRT_SECURE_NO_WARNINGS"
+				},
+				{
+					"backtrace" : 14,
+					"define" : "_XOPEN_SOURCE=600"
+				},
+				{
+					"define" : "ggml_base_EXPORTS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 15,
+					"path" : "C:/Programming/Solace/llama.cpp/ggml/src/."
+				},
+				{
+					"backtrace" : 16,
+					"path" : "C:/Programming/Solace/llama.cpp/ggml/src/../include"
+				}
+			],
+			"language" : "C",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					17
+				],
+				"standard" : "11"
+			},
+			"sourceIndexes" : 
+			[
+				6,
+				8,
+				13
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O1 /Ob1 /DNDEBUG -std:c++17"
+				},
+				{
+					"backtrace" : 18,
+					"fragment" : "/utf-8"
+				},
+				{
+					"backtrace" : 19,
+					"fragment" : "/bigobj"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "/wd4005"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "/wd4244"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "/wd4267"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "/wd4305"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "/wd4566"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "/wd4996"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "/wd4702"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 9,
+					"define" : "GGML_BUILD"
+				},
+				{
+					"backtrace" : 10,
+					"define" : "GGML_COMMIT=\"b0493156\""
+				},
+				{
+					"backtrace" : 11,
+					"define" : "GGML_SCHED_MAX_COPIES=4"
+				},
+				{
+					"backtrace" : 12,
+					"define" : "GGML_SHARED"
+				},
+				{
+					"backtrace" : 10,
+					"define" : "GGML_VERSION=\"0.0.6140\""
+				},
+				{
+					"backtrace" : 13,
+					"define" : "_CRT_SECURE_NO_WARNINGS"
+				},
+				{
+					"backtrace" : 14,
+					"define" : "_XOPEN_SOURCE=600"
+				},
+				{
+					"define" : "ggml_base_EXPORTS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 15,
+					"path" : "C:/Programming/Solace/llama.cpp/ggml/src/."
+				},
+				{
+					"backtrace" : 16,
+					"path" : "C:/Programming/Solace/llama.cpp/ggml/src/../include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					17
+				],
+				"standard" : "17"
+			},
+			"sourceIndexes" : 
+			[
+				7,
+				9,
+				10,
+				11,
+				15
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "ggml-base::@64c2a4576bf370762041",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 3,
+				"path" : "lib"
+			},
+			{
+				"backtrace" : 3,
+				"path" : "bin"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "C:/Program Files/llama.cpp"
+		}
+	},
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "/machine:x64 /INCREMENTAL:NO",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "ggml-base",
+	"nameOnDisk" : "ggml-base.dll",
+	"paths" : 
+	{
+		"build" : "ggml/src",
+		"source" : "ggml/src"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				12,
+				14
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				13,
+				15
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"path" : "ggml/include/ggml.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "ggml/include/ggml-alloc.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "ggml/include/ggml-backend.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "ggml/include/ggml-cpp.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "ggml/include/ggml-opt.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "ggml/include/gguf.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "ggml/src/ggml.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "ggml/src/ggml.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "ggml/src/ggml-alloc.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "ggml/src/ggml-backend.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "ggml/src/ggml-opt.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "ggml/src/ggml-threading.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "ggml/src/ggml-threading.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "ggml/src/ggml-quants.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "ggml/src/ggml-quants.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "ggml/src/gguf.cpp",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}

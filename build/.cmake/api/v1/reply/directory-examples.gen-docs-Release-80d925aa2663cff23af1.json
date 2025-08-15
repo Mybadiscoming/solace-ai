@@ -1,0 +1,45 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"examples/gen-docs/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 3,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"bin/Release/llama-gen-docs.exe"
+			],
+			"targetId" : "llama-gen-docs::@a5c1299bf7f1d2855f34",
+			"targetIndex" : 25,
+			"type" : "target"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "examples/gen-docs",
+		"source" : "examples/gen-docs"
+	}
+}
