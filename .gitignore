@@ -29,3 +29,5 @@ Models/
 
 # Docker
 *.pid
+bfg.jar
+build/

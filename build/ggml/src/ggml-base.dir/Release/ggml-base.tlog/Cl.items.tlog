@@ -1,8 +1,0 @@
-C:\Programming\Solace\llama.cpp\ggml\src\ggml.c;C:\Programming\Solace\build\ggml\src\ggml-base.dir\Release\ggml.c.obj
-C:\Programming\Solace\llama.cpp\ggml\src\ggml.cpp;C:\Programming\Solace\build\ggml\src\ggml-base.dir\Release\ggml.cpp.obj
-C:\Programming\Solace\llama.cpp\ggml\src\ggml-alloc.c;C:\Programming\Solace\build\ggml\src\ggml-base.dir\Release\ggml-alloc.obj
-C:\Programming\Solace\llama.cpp\ggml\src\ggml-backend.cpp;C:\Programming\Solace\build\ggml\src\ggml-base.dir\Release\ggml-backend.obj
-C:\Programming\Solace\llama.cpp\ggml\src\ggml-opt.cpp;C:\Programming\Solace\build\ggml\src\ggml-base.dir\Release\ggml-opt.obj
-C:\Programming\Solace\llama.cpp\ggml\src\ggml-threading.cpp;C:\Programming\Solace\build\ggml\src\ggml-base.dir\Release\ggml-threading.obj
-C:\Programming\Solace\llama.cpp\ggml\src\ggml-quants.c;C:\Programming\Solace\build\ggml\src\ggml-base.dir\Release\ggml-quants.obj
-C:\Programming\Solace\llama.cpp\ggml\src\gguf.cpp;C:\Programming\Solace\build\ggml\src\ggml-base.dir\Release\gguf.obj
