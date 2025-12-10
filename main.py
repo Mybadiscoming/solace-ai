@@ -1,29 +1,44 @@
 # -----------------------
-# OpenBLAS / PyTorch check
+# OpenBLAS / PyTorch check (safe when torch is missing)
 # -----------------------
 import numpy as np
-# Optional torch import — safe on Render / CPU-only environments
+import time
+from numpy import show_config
+
+# Try to import torch, but allow missing torch on prod (Render)
 try:
     import torch
 except Exception:
     torch = None
-    print("[INFO] Torch not available. Running in lightweight mode.")
-import time
-from numpy import show_config
+    print("[INFO] torch not installed or failed to import — running in lightweight mode.")
 
-print("=== OpenBLAS / NumPy / PyTorch Info ===")
-show_config()  # Shows which BLAS library is linked
-print("PyTorch MKL enabled:", torch.backends.mkl.is_available())
-print("PyTorch OpenMP threads:", torch.get_num_threads())
+print("=== OpenBLAS / NumPy Info ===")
+try:
+    show_config()  # Shows which BLAS library is linked
+except Exception as e:
+    print("[WARN] numpy.show_config() failed:", e)
 
-# Quick performance test
-size = 1000
-a = np.random.rand(size, size)
-b = np.random.rand(size, size)
-start = time.time()
-c = a @ b
-end = time.time()
-print(f"[OpenBLAS Test] {size}x{size} matrix multiplication took {end-start:.2f} seconds")
+if torch is not None:
+    try:
+        print("PyTorch MKL enabled:", torch.backends.mkl.is_available())
+        print("PyTorch OpenMP threads:", torch.get_num_threads())
+    except Exception as e:
+        print("[WARN] torch exists but querying backends failed:", e)
+else:
+    print("[INFO] torch: NOT AVAILABLE (skipping torch-specific checks)")
+
+# Quick performance test (numpy only — safe without torch)
+try:
+    size = 1000
+    a = np.random.rand(size, size)
+    b = np.random.rand(size, size)
+    start = time.time()
+    c = a @ b
+    end = time.time()
+    print(f"[OpenBLAS Test] {size}x{size} matrix multiplication took {end-start:.2f} seconds")
+except Exception as e:
+    print("[WARN] numpy performance test failed:", e)
+
 print("======================================\n")
 
 # -----------------------
