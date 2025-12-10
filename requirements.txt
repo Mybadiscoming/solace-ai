@@ -1,5 +1,3 @@
-# Overwrite requirements.txt with correct package lines (no shell text)
-cat > requirements.txt <<'REQ'
 fastapi==0.95.2
 uvicorn[standard]==0.23.0
 pydantic==1.10.13
@@ -8,14 +6,3 @@ scikit-learn==1.8.0
 jinja2==3.1.6
 diskcache==5.4.0
 gunicorn==20.1.0
-REQ
-
-# Verify the file looks correct
-echo "---- requirements.txt ----"
-sed -n '1,200p' requirements.txt
-echo "--------------------------"
-
-# Stage, commit and push the clean requirements
-git add requirements.txt
-git commit -m "Fix: replace requirements.txt with prod-safe package pins"
-git push origin main
