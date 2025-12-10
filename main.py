@@ -31,8 +31,17 @@ from pydantic import BaseModel
 from pathlib import Path
 import uvicorn
 import sys
+import os
 
-# Your local imports
+# -----------------------
+# Secret Key (Render will inject SNUGSY variable)
+# -----------------------
+SECRET_KEY = os.getenv("SNUGSY", "snugsy_local_dev_key")
+print("Using SECRET_KEY =", SECRET_KEY[:5] + "")
+
+# -----------------------
+# Local imports
+# -----------------------
 from interface.terminal_chat import start_chat
 from brain.sentiment import detect_emotion
 from brain.responder import generate_response
@@ -45,22 +54,20 @@ print("Solace memory has been cleared on startup.")
 
 # -----------------------
 # Create FastAPI app
-# -----------------------# -----------------------
-# Create FastAPI app
 # -----------------------
 app = FastAPI(title="Solace API")
 
 # CORS setup (allow from anywhere)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
 )
 
 # -----------------------
-# Health Check (must come BEFORE static routes)
+# Health Check
 # -----------------------
 @app.get("/health")
 def health():
@@ -69,7 +76,7 @@ def health():
 # -----------------------
 # Frontend serving
 # -----------------------
-frontend_path = Path(__file__).parent / "dist"  # HF Spaces will have dist in root
+frontend_path = Path(__file__).parent / "dist"
 index_file = frontend_path / "index.html"
 
 @app.get("/")
@@ -98,18 +105,15 @@ class Reply(BaseModel):
     confidence: float
 
 # -----------------------
-# API Endpoints
+# Chat Endpoint
 # -----------------------
 @app.post("/api/chat", response_model=Reply)
 def chat_with_solace(message: Message):
-    # Detect emotion once
     emotion, confidence = detect_emotion(message.text)
     print(f"[Emotion] {emotion} ({confidence:.2f})")
 
-    # Retrieve chat history
     history = get_history(message.user_id)
 
-    # Generate reply
     reply = generate_response(
         user_input=message.text,
         history=history,
@@ -117,7 +121,6 @@ def chat_with_solace(message: Message):
         confidence=confidence
     )
 
-    # Save this exchange
     add_to_history(message.user_id, message.text, reply)
 
     return Reply(
@@ -126,12 +129,15 @@ def chat_with_solace(message: Message):
         confidence=round(confidence, 2)
     )
 
+# -----------------------
+# Debug Memory Endpoint
+# -----------------------
 @app.get("/api/memory")
 def debug_memory():
     return chat_history
 
 # -----------------------
-# Run server or terminal
+# Run server or terminal mode
 # -----------------------
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "web":
