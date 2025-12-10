@@ -1,4 +1,4 @@
-# overwrite requirements.txt with versions compatible with Python 3.10
+# Overwrite requirements.txt with correct package lines (no shell text)
 cat > requirements.txt <<'REQ'
 fastapi==0.95.2
 uvicorn[standard]==0.23.0
@@ -10,10 +10,12 @@ diskcache==5.4.0
 gunicorn==20.1.0
 REQ
 
-# show the file so you can confirm quickly
+# Verify the file looks correct
+echo "---- requirements.txt ----"
 sed -n '1,200p' requirements.txt
+echo "--------------------------"
 
-# stage + commit + push
+# Stage, commit and push the clean requirements
 git add requirements.txt
-git commit -m "Pin prod deps to Python 3.10-compatible versions"
+git commit -m "Fix: replace requirements.txt with prod-safe package pins"
 git push origin main
