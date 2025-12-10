@@ -9,4 +9,16 @@ uvicorn
 pydantic
 llama-cpp-python
 jinja2
+diskcacheflask
+transformers
+accelerate
+numpy
+scikit-learn
+emoji
+fastapi
+uvicorn
+pydantic
+llama-cpp-python
+jinja2
 diskcache
+gunicorn==20.1.0
