@@ -30,4 +30,4 @@ Models/
 # Docker
 *.pid
 bfg.jar
-build/
+build/solace-frontend/node_modules/
