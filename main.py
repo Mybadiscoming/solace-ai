@@ -45,6 +45,8 @@ print("Solace memory has been cleared on startup.")
 
 # -----------------------
 # Create FastAPI app
+# -----------------------# -----------------------
+# Create FastAPI app
 # -----------------------
 app = FastAPI(title="Solace API")
 
@@ -56,6 +58,13 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"]
 )
+
+# -----------------------
+# Health Check (must come BEFORE static routes)
+# -----------------------
+@app.get("/health")
+def health():
+    return {"ok": True}
 
 # -----------------------
 # Frontend serving

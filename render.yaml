@@ -3,8 +3,13 @@ services:
     name: solace-backend
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
+    autoDeploy: true
+
+    buildCommand: pip install --upgrade pip setuptools wheel && pip install -r requirements_prod.txt
+    startCommand: gunicorn -k uvicorn.workers.UvicornWorker main:app --bind 0.0.0.0:$PORT -w 2
+
     envVars:
+      - key: SECRET_KEY
+        value: "replace-me-with-a-long-random-string"
       - key: PYTHON_VERSION
-        value: 3.10
+        value: "3.10"
