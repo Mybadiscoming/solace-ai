@@ -10,6 +10,6 @@ services:
 
     envVars:
       - key: SECRET_KEY
-        value: "replace-me-with-a-long-random-string"
+        value: "replace-this-with-a-long-random-string"
       - key: PYTHON_VERSION
         value: "3.10"
