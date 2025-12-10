@@ -31,3 +31,4 @@ Models/
 *.pid
 bfg.jar
 build/solace-frontend/node_modules/
+solace-ai/
