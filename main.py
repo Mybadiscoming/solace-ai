@@ -2,7 +2,12 @@
 # OpenBLAS / PyTorch check
 # -----------------------
 import numpy as np
-import torch
+# Optional torch import — safe on Render / CPU-only environments
+try:
+    import torch
+except Exception:
+    torch = None
+    print("[INFO] Torch not available. Running in lightweight mode.")
 import time
 from numpy import show_config
 
