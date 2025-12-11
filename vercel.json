@@ -5,14 +5,5 @@
       "source": "/api/:path*",
       "destination": "https://snugsy-backend.onrender.com/api/:path*"
     }
-  ],
-  "builds": [
-    {
-      "src": "solace-frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "solace-frontend/dist"
-      }
-    }
   ]
 }
