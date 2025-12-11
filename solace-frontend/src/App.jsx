@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import Typed from "typed.js";
-import { FiSend } from "react-icons/fi";
+import { FiSend, FiUsers, FiMoreHorizontal, FiDatabase, FiVolume2 } from "react-icons/fi";
 
-/* Small typing-dots component */
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
+
+/* Typing dots component */
 const TypingDots = () => (
   <div className="flex gap-1 items-center">
     <span className="w-2 h-2 rounded-full bg-gray-500 dark:bg-gray-300 animate-bounce" style={{ animationDelay: "0.05s" }} />
@@ -11,13 +13,13 @@ const TypingDots = () => (
   </div>
 );
 
-/* Message component: typed.js for solace replies, simple text for user */
+/* Message bubble */
 const Message = ({ sender, text, isTyping, userInputForReply, onRetry, retryDisabled }) => {
   const elRef = useRef(null);
   const typedRef = useRef(null);
 
   useEffect(() => {
-    if (sender === "solace" && !isTyping && elRef.current && text) {
+    if (sender === "Snugsy" && !isTyping && elRef.current && text) {
       elRef.current.innerHTML = "";
       typedRef.current = new Typed(elRef.current, {
         strings: [text],
@@ -29,32 +31,32 @@ const Message = ({ sender, text, isTyping, userInputForReply, onRetry, retryDisa
   }, [sender, text, isTyping]);
 
   return (
-      <div className={`flex ${sender === "user" ? "justify-end" : "justify-start"} my-2`}>
-        <div className={`flex items-end gap-3 max-w-xs p-3 rounded-2xl text-sm shadow-md break-words
-            ${sender === "user" ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700 dark:text-white text-gray-900"}`}>
-          {sender === "solace" && <span className="text-2xl">🌿</span>}
-
+    <div className={`flex ${sender === "user" ? "justify-end" : "justify-start"} my-2`}>
+      <div
+        className={`flex items-end gap-3 max-w-xl p-3 rounded-2xl text-sm shadow-md break-words
+          ${sender === "user" ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700 dark:text-white text-gray-900"}`}>
+        
+        {sender === "Snugsy" && <span className="text-2xl">🌿</span>}
+        
         <div className="min-w-0">
-          {sender === "solace" ? (
-            isTyping ? <TypingDots /> : <div ref={elRef} />
-          ) : (
-            <div>{text}</div>
-          )}
+          {sender === "Snugsy"
+            ? isTyping
+              ? <TypingDots />
+              : <div ref={elRef} />
+            : <div>{text}</div>}
         </div>
 
         {sender === "user" && <span className="text-2xl">🧍‍♀</span>}
       </div>
 
-      {/* Retry button for Solace messages */}
-      {sender === "solace" && !isTyping && userInputForReply && (
+      {/* Retry button */}
+      {sender === "Snugsy" && !isTyping && userInputForReply && (
         <button
           onClick={onRetry}
           disabled={retryDisabled}
           className="ml-2 self-end p-1 rounded-full bg-yellow-300 hover:bg-yellow-400 disabled:opacity-50 text-yellow-900"
-          aria-label="Retry response"
-          title="Retry"
         >
-         ↻
+          ↻
         </button>
       )}
     </div>
@@ -62,21 +64,23 @@ const Message = ({ sender, text, isTyping, userInputForReply, onRetry, retryDisa
 };
 
 export default function App() {
-  const [messages, setMessages] = useState([
-    { id: `m-${Date.now()}-1`, sender: "solace", text: "Hi I am solace 🌸...", userInputForReply: null },
-    { id: `m-${Date.now()}-2`, sender: "solace", text: "How are you feeling today?", userInputForReply: null }
-  ]);
+
+  const initialMessages = [
+    { id: `m-${Date.now()}-1`, sender: "Snugsy", text: "Hi I am Snugsy 🌸... I’m here to hear you.", userInputForReply: null },
+    { id: `m-${Date.now()}-2`, sender: "Snugsy", text: "How are you feeling today?", userInputForReply: null }
+  ];
+
+  const [messages, setMessages] = useState(initialMessages);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
   const [retryingMessageId, setRetryingMessageId] = useState(null);
 
-  const audioRef = useRef(null);
   const bottomRef = useRef(null);
-  const scrollContainerRef = useRef(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
 
   useEffect(() => {
@@ -85,84 +89,99 @@ export default function App() {
 
   const genId = () => `m-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 
-  const stripEmotionBracket = (s) => {
-    if (!s) return s;
-    return s.replace(/\(Detected emotion:.*?\)/gi, "").trim();
+  /* ---------------- New Chat (sidebar) ---------------- */
+  const newChat = () => {
+    if (!confirm("Start a new chat? This will clear your current conversation.")) return;
+
+    setMessages([
+      { id: genId(), sender: "Snugsy", text: "Hi I am Snugsy 🌸... I’m here to hear you.", userInputForReply: null },
+      { id: genId(), sender: "Snugsy", text: "How are you feeling today?", userInputForReply: null }
+    ]);
+    setInput("");
   };
 
-  // Main function to fetch a reply from backend for given user input and update messages
-  const fetchReply = async (userText, replaceMessageId = null) => {
+  /* ---------------- Send message ---------------- */
+  const sendMessage = async () => {
+    if (!input.trim()) return;
+
+    const userMsg = {
+      id: genId(),
+      sender: "user",
+      text: input.trim(),
+      userInputForReply: null,
+    };
+
+    setMessages(prev => [...prev, userMsg]);
+    setInput("");
     setIsTyping(true);
+
     try {
-      const resp = await fetch("http://localhost:8000/api/chat", {
+      const res = await fetch(`${API_BASE}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          user_id: "default",
-          text: userText
+          user_id: "user-123",
+          text: userMsg.text
         }),
       });
-      const data = await resp.json();
-      const raw = (data && data.response) ? String(data.response) : "Something went wrong. 🌧";
-      const cleaned = stripEmotionBracket(raw);
 
-      if (replaceMessageId) {
-        // Replace the old Solace message text with the new reply
-        setMessages((m) =>
-          m.map((msg) =>
-            msg.id === replaceMessageId ? { ...msg, text: cleaned } : msg
-          )
-        );
-      } else {
-        // Append new Solace message with userInputForReply linked
-        setMessages((m) => [
-          ...m,
-          { id: genId(), sender: "solace", text: cleaned, userInputForReply: userText },
-        ]);
-      }
+      const data = await res.json();
+
+      const reply = {
+        id: genId(),
+        sender: "Snugsy",
+        text: data.response || "Sorry, I couldn't reply.",
+        userInputForReply: userMsg.text,
+      };
+
+      setMessages(prev => [...prev, reply]);
+
     } catch (err) {
-      console.error("Chat API error:", err);
-      if (replaceMessageId) {
-        setMessages((m) =>
-          m.map((msg) =>
-            msg.id === replaceMessageId ? { ...msg, text: "Something went wrong. 🌧" } : msg
-          )
-        );
-      } else {
-        setMessages((m) => [
-          ...m,
-          { id: genId(), sender: "solace", text: "Something went wrong. 🌧", userInputForReply: userText },
-        ]);
-      }
-    } finally {
-      setIsTyping(false);
-      setRetryingMessageId(null);
+      console.error("Error:", err);
+      setMessages(prev => [...prev, {
+        id: genId(),
+        sender: "Snugsy",
+        text: "⚠ Oops, something went wrong.",
+        userInputForReply: userMsg.text,
+      }]);
     }
+
+    setIsTyping(false);
   };
 
-  const sendMessage = async () => {
-    const textToSend = input.trim();
-    if (!textToSend) return;
+  /* ---------------- Retry ---------------- */
+  const handleRetry = async (messageId) => {
+    const msg = messages.find(m => m.id === messageId);
+    if (!msg) return;
 
-    const sendSound = new Audio("/send.mp3");
-    sendSound.play().catch((err) => console.warn("Audio play error:", err));
+    setRetryingMessageId(messageId);
+    const resendText = msg.userInputForReply;
 
-    const userMsg = { id: genId(), sender: "user", text: textToSend };
-    setMessages((m) => [...m, userMsg]);
-    setInput("");
-    audioRef.current?.play();
+    setIsTyping(true);
+    try {
+      const res = await fetch(`${API_BASE}/api/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: "user-123", text: resendText }),
+      });
 
-    // Fetch reply for this input
-    fetchReply(textToSend);
+      const data = await res.json();
+      const reply = {
+        id: genId(),
+        sender: "Snugsy",
+        text: data.response || "Sorry, no reply.",
+        userInputForReply: resendText,
+      };
+
+      setMessages(prev => [...prev, reply]);
+
+    } catch (err) {
+      console.error(err);
+    }
+
+    setRetryingMessageId(null);
+    setIsTyping(false);
   };
-
-  const handleRetry = (messageId) => {
-  const msgToRetry = messages.find((m) => m.id === messageId);
-  if (!msgToRetry || !msgToRetry.userInputForReply) return;
-
-  setRetryingMessageId(messageId); // <-- set here before fetch
-  fetchReply(msgToRetry.userInputForReply, messageId);
-};
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -171,61 +190,147 @@ export default function App() {
     }
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white dark:from-gray-900 dark:to-black transition-colors duration-300 flex flex-col items-center">
-      <button
-        onClick={() => setDarkMode(!darkMode)}
-        className="fixed top-4 right-4 text-2xl z-20 p-2 rounded"
-        aria-label="Toggle dark mode"
-      >
-        {darkMode ? "🌞" : "🌙"}
-      </button>
-      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 flex items-center gap-2 z-10 px-4 py-2 rounded-full shadow-lg backdrop-blur-md bg-white/30 dark:bg-gray-800/30 border border-white/20 dark:border-gray-700/20">
-  <img src="solacee.jpg" alt="Solace AI logo" className="w-8 h-8 rounded-full" />
-  <span className="font-bold text-gray-900 dark:text-white text-lg">Solace AI</span>
-</div>
-      <div
-        className="w-full max-w-md flex flex-col space-y-2 flex-grow overflow-y-auto px-4 pt-20 pb-28"
-        ref={scrollContainerRef}
-      >
-       {messages.map((msg) => (
-  <Message
-    key={msg.id}
-    sender={msg.sender}
-    text={msg.text}
-    userInputForReply={msg.userInputForReply}  // <-- Add this line
-    isTyping={msg.id === retryingMessageId}
-    onRetry={msg.sender === "solace" ? () => handleRetry(msg.id) : undefined}
-    retryDisabled={retryingMessageId === msg.id || isTyping}
-  />
-))}
-        {isTyping && !retryingMessageId && (
-          <Message key="typing" sender="solace" text="" isTyping={true} />
-        )}
-        <div ref={bottomRef} />
-      </div>
+  /* ---------------- Sidebar placeholders ---------------- */
+  const openMemory = () => alert("Memory (coming soon)");
+  const toggleSound = () => alert("Sound toggled");
 
-      <div className="fixed bottom-4 left-0 right-0 px-4 max-w-md mx-auto">
-        <div className="flex">
-          <textarea
-            rows={1}
-            className="flex-grow p-3 border dark:border-gray-700 rounded-l-2xl outline-none dark:bg-gray-800 dark:text-white resize-none"
-            placeholder="I’m here to hear you..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
-          <button
-            onClick={sendMessage}
-            className="bg-green-500 text-white px-4 rounded-r-2xl hover:bg-green-600 flex items-center justify-center"
-            aria-label="Send"
-          >
-            <FiSend className="text-xl" />
-          </button>
+  return (
+    <div className="min-h-screen flex bg-gradient-to-b from-green-50 to-white dark:from-gray-900 dark:to-black transition-colors">
+
+      {/* Center chat column */}
+      <div className="flex-grow flex justify-center">
+        <div className="w-full max-w-3xl flex flex-col relative">
+
+          {/* Header */}
+          <div className="fixed top-0 left-0 right-0 z-30">
+            <div className="max-w-3xl mx-auto px-4 h-16 flex items-center gap-3 shadow-lg bg-white/30 dark:bg-gray-800/30 backdrop-blur-md">
+              <img src="snugsyy.jpg" alt="Snugsy" className="w-10 h-10 rounded-full" />
+              <span className="font-bold text-gray-900 dark:text-white text-lg">Snugsy AI</span>
+
+              <div className="ml-auto flex items-center gap-2">
+                <button
+                  onClick={() => setShowSettings(true)}
+                  className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <FiMoreHorizontal className="text-xl" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Messages */}
+          <div className="flex flex-col flex-grow overflow-y-auto pt-20 pb-28 px-4">
+            {messages.map(msg => (
+              <Message
+                key={msg.id}
+                sender={msg.sender}
+                text={msg.text}
+                userInputForReply={msg.userInputForReply}
+                isTyping={msg.id === retryingMessageId}
+                onRetry={msg.sender === "Snugsy" ? () => handleRetry(msg.id) : undefined}
+                retryDisabled={retryingMessageId === msg.id || isTyping}
+              />
+            ))}
+
+            {isTyping && <Message key="typing" sender="Snugsy" isTyping={true} />}
+
+            <div ref={bottomRef} />
+          </div>
+
+          {/* Input box */}
+          <div className="fixed bottom-0 left-0 right-0 flex justify-center z-30">
+            <div className="w-full max-w-3xl px-4 pb-4">
+              <div className="flex">
+                <textarea
+                  rows={1}
+                  className="flex-grow p-3 border dark:border-gray-700 rounded-l-2xl outline-none dark:bg-gray-800 dark:text-white resize-none"
+                  placeholder="I’m here to hear you..."
+                  value={input}
+                  onChange={e => setInput(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  disabled={isTyping}
+                />
+
+                <button
+                  onClick={sendMessage}
+                  disabled={isTyping || !input.trim()}
+                  className="bg-green-500 text-white px-4 rounded-r-2xl hover:bg-green-600 disabled:opacity-50"
+                >
+                  <FiSend className="text-xl" />
+                </button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <audio ref={audioRef} src="/send.mp3" preload="auto" />
+      {/* ⭐ RIGHT SIDEBAR (with New Chat added here) */}
+      <aside className="fixed top-16 right-0 bottom-0 w-20 bg-white dark:bg-gray-900 border-l border-gray-200 dark:border-gray-700 flex flex-col justify-between items-center py-4 z-40">
+
+        <div className="flex flex-col gap-6">
+
+          {/* NEW CHAT BUTTON HERE */}
+          <button
+            onClick={newChat}
+            className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full"
+            title="New Chat"
+          >
+            🆕
+          </button>
+
+          <button className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full">
+            💬
+          </button>
+
+          <button className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full">
+            <FiUsers className="text-xl" />
+          </button>
+
+          <button onClick={openMemory} className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full">
+            <FiDatabase className="text-xl" />
+          </button>
+
+        </div>
+
+        <div className="flex flex-col gap-4 items-center">
+          <button onClick={toggleSound} className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full">
+            <FiVolume2 className="text-xl" />
+          </button>
+
+          <button
+            onClick={() => setShowSettings(!showSettings)}
+            className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full"
+          >
+            <FiMoreHorizontal className="text-xl" />
+          </button>
+        </div>
+
+      </aside>
+
+      {/* Settings Panel */}
+      {showSettings && (
+        <div className={`fixed top-0 right-20 h-full w-72 bg-white dark:bg-gray-800 shadow-xl p-4 transition-transform duration-300 ${showSettings ? "translate-x-0" : "translate-x-full"}`}>
+          <h2 className="text-lg font-bold mb-4 text-gray-900 dark:text-white">Settings</h2>
+
+          <div className="flex items-center justify-between py-2">
+            <span className="text-gray-800 dark:text-gray-200">Dark Mode</span>
+            <button onClick={() => setDarkMode(!darkMode)} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+              {darkMode ? "🌞" : "🌙"}
+            </button>
+          </div>
+
+          <div className="mt-4 flex flex-col gap-3">
+            <button className="text-left py-2 px-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700">
+              Profile
+            </button>
+            <button className="text-left py-2 px-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700">
+              Notifications
+            </button>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
