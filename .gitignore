@@ -32,3 +32,9 @@ Models/
 bfg.jar
 build/solace-frontend/node_modules/
 solace-ai/
+# Node
+node_modules/
+solace-frontend/node_modules/
+dist/
+.vscode/
+.env
