@@ -1,13 +1,18 @@
 {
   "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://snugsy-backend.onrender.com/api/:path*"
+    }
+  ],
   "builds": [
     {
       "src": "solace-frontend/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "dist" }
+      "config": {
+        "distDir": "solace-frontend/dist"
+      }
     }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
